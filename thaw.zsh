@@ -2,8 +2,8 @@
 
 # uncompress a hierarchy of .tar.xz into a folder, in parallel
 
-# usage thaw.sh <hotpath> <coldpath> <folder>
-# e.g. nohup ./thaw.sh /groups/genie/genie /nearline/genie 20180228_ArcLight96f &
+# usage thaw.zsh <hotpath> <coldpath> <folder>
+# e.g. nohup ./thaw.zsh /groups/genie/genie /nearline/genie 20180228_ArcLight96f &!
 
 set -o errexit
 

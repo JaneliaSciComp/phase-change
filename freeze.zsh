@@ -2,10 +2,10 @@
 
 # compress each folder at a given level in a hierarchy to a .tar.xz, in parallel
 
-# usage freeze.sh <hotpath> <coldpath> <tmppath> <folder> <level>
-# e.g. nohup ./freeze.sh /groups/genie/genie /nearline/genie /nrs/genie 20180228_ArcLight96f 1 &
+# usage freeze.zsh <hotpath> <coldpath> <tmppath> <folder> <level>
+# e.g. nohup ./freeze.zsh /groups/genie/genie /nearline/genie /nrs/genie 20180228_ArcLight96f 1 &
 
-# nohup /groups/genie/genie/GECIScreenData/GECI_Imaging_Data/SCaMP /nearline/genie/SCaMP /nrs/genie/arthurb/tar.xz 20250324_SCaMP_raw &
+# nohup ./freeze.zsh /groups/genie/genie/GECIScreenData/GECI_Imaging_Data/SCaMP /nearline/genie/SCaMP2 /nrs/genie/arthurb/tar.xz 20250324_SCaMP_raw 1 &!
 
 set -o errexit
 
