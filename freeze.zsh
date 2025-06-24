@@ -9,6 +9,11 @@
 
 set -o errexit
 
+if [[ $# != '5' ]] ; then
+    echo wrong number of input arguments
+    exit
+fi
+
 hotpath=$1
 coldpath=$2
 tmppath=$3

@@ -7,6 +7,11 @@
 
 set -o errexit
 
+if [[ $# != '3' ]] ; then
+    echo wrong number of input arguments
+    exit
+fi
+
 hotpath=$1
 coldpath=$2
 folder=$3
