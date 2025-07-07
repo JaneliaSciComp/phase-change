@@ -28,8 +28,8 @@ doit() {
     mkdir -p $coldpath/$(dirname $1)
     XZ_OPT=-1 tar cJf $coldpath/${1}.tar.xz -C $(dirname $1) $(basename $1)
     
-    filesizes=$(du --bytes $coldpath/${1}.tar.xz $1 | cut -f1)
-    echo compression ratio = $(dc -e "3 k $filesizes / p")
+    filesizes=$(du -s --bytes $coldpath/${1}.tar.xz $1 | cut -f1)
+    echo compression ratio = $(dc -e "3 k $filesizes / p") for $1
     
     sync
     
