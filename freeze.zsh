@@ -22,6 +22,8 @@ level=$5
 
 set -o xtrace
 
+[[ -z $(find $hotpath/$folder -type f ! -writable) ]] || ( echo ERROR: not all files are writeable ; return 1 )
+
 IFS=$'\n'
 
 doit() {
