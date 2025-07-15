@@ -1,5 +1,10 @@
 #!/usr/bin/zsh
 
+# test that it works
+#
+# usage test.zsh <level>
+# e.g. ./test.zsh 2
+
 level=$1
 
 hotpath=$TMPPREFIX/hot
