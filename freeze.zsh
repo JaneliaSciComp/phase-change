@@ -52,7 +52,7 @@ done
 for file in $(find $folder -maxdepth $level -type f) ; do
     doit $file &
 done
-wait
+wait || exit
 [[ -d $tmppath/$folder ]] && find $tmppath/$folder -depth -type d -exec rmdir \{\} \;
 [[ -d $hotpath/$folder ]] && find $hotpath/$folder -depth -type d -exec rmdir \{\} \;
 [[ $? ]] && touch $hotpath/${folder}-MOVED-TO-NEARLINE
