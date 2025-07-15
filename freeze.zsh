@@ -46,13 +46,18 @@ doit() {
 }
 
 cd $hotpath
+pids=()
 for subfolder in $(find $folder -mindepth $level -maxdepth $level -type d) ; do
     doit $subfolder &
+    pids+=($!)
 done
 for file in $(find $folder -maxdepth $level -type f) ; do
     doit $file &
+    pids+=($!)
 done
-wait
+for pid in ${pids[@]}; do
+    wait $pid || return 1
+done
 [[ -d $tmppath/$folder ]] && find $tmppath/$folder -depth -type d -exec rmdir \{\} \;
 [[ -d $hotpath/$folder ]] && find $hotpath/$folder -depth -type d -exec rmdir \{\} \;
 [[ $? ]] && touch $hotpath/${folder}-MOVED-TO-NEARLINE
