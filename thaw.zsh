@@ -21,12 +21,18 @@ set -o xtrace
 IFS=$'\n'
 
 doit() {
+    subdir=$hotpath/$(dirname $1)
+    mkdir -p $subdir
+    tar xf $coldpath/$1 -C $subdir
 }
 
 mkdir $hotpath/$folder
 cd $coldpath
-find . -path "./${folder}*tar.xz" -exec zsh -c ' \
-        subdir=$0/$(dirname {}); \
-        mkdir -p $subdir; \
-        tar xf $1/{} -C $subdir' \
-    $hotpath $coldpath \;
+for file in $(find . -path "./${folder}*tar.xz") ; do
+    doit $file &
+    pids+=($!)
+done
+for pid in ${pids[@]}; do
+    wait $pid || return 1
+done
+[[ $? ]] && touch $hotpath/$folder/RESTORED-FROM-NEARLINE
