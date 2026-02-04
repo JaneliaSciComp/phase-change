@@ -46,6 +46,7 @@ doit() {
 }
 
 cd $hotpath
+ls -R $folder > $folder/toc.txt
 pids=()
 for subfolder in $(find $folder -mindepth $level -maxdepth $level -type d) ; do
     doit $subfolder &
