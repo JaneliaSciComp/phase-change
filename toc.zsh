@@ -13,6 +13,12 @@ set -o xtrace
 
 cd $1
 
+if [[ -n $(ls | grep -v 'xz$') ]] ; then
+    echo these files are not compressed. exiting
+    ls | grep -v 'xz$'
+    exit
+fi
+
 doit() {
     tar tfJ "$1" > "$1.toc"
 }
