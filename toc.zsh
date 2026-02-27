@@ -14,9 +14,8 @@ set -o xtrace
 cd $1
 
 if [[ -n $(ls | grep -v 'xz$') ]] ; then
-    echo these files are not compressed. exiting
+    echo in $PWD these files are not compressed
     ls | grep -v 'xz$'
-    exit
 fi
 
 doit() {
@@ -24,7 +23,7 @@ doit() {
 }
 
 pids=()
-for tarfile in * ; do
+for tarfile in *xz ; do
     doit "$tarfile" &
     pids+=($!)
 done
