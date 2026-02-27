@@ -9,6 +9,9 @@
 
 # to view a compressed table of contents:  tar xOf toc.txt.tar.xz | less
 
+# to list folders without a table of contents:
+# find /nearline/genie/GETIScreenData/RawImageData  -type d '!' -exec test -e "{}/toc.txt.tar.xz" ';' -print
+
 set -o xtrace
 
 cd $1
